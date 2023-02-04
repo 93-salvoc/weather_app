@@ -17,7 +17,7 @@ function setFavicons(favImg) {
 searchForm.addEventListener("submit", (event) => {
     event.preventDefault();
     fetch(
-            `https://api.unsplash.com/search/photos/?client_id=fdAq1PMxAK-12a6aWN0ClUsSq7M-b3_kg6h545BhU_k${cityInput.value}`
+            `https://api.unsplash.com/search/photos/?client_id=fdAq1PMxAK-12a6aWN0ClUsSq7M-b3_kg6h545BhU_kquery=${cityInput.value}`
         )
         .then((response) => response.json())
         .then((data) => {
