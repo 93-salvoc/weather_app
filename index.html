@@ -1,26 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>weather-app</title>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="style.css" />
-    <link class="favicon" rel="icon" type="image/x-icon" href="/partly-cloudy.ico">
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Weather App</title>
 </head>
 
 <body>
-    <div class="app">
-        <div class="weather-card">
-            <h2 class="city"></h2>
-            <img class="icon" />
-            <p class="condition"></p>
-            <p class="temp"></p>
+    <div id="app-container">
+        <div id="weather-layout">
+
+            <div class="weather-card">
+                <h2 class="city"></h2>
+                <img class="icon" />
+                <p class="condition"></p>
+                <p class="temp"></p>
+            </div>
         </div>
-        <form class="search-box">
-            <input class="city-input" type="text" required="required" placeholder="city name..." />
-            <button type="submit" class="search-btn">search</button>
-        </form>
+        <div id="city-layout">
+
+            <form class="search-box">
+                <input class="city-input" type="text" required="required" placeholder="city name..." />
+                <button type="submit" class="search-btn">search</button>
+            </form>
+
+            <div id="result">
+
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
