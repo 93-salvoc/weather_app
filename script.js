@@ -8,16 +8,12 @@ const temp = document.querySelector(".temp");
 const cityInput = document.querySelector(".city-input");
 const searchForm = document.querySelector("form");
 
-function setFavicons(favImg) {
-    let favicon = document.querySelector('.favicon');
-    favicon.href = favImg
-}
 
 
 searchForm.addEventListener("submit", (event) => {
     event.preventDefault();
     fetch(
-            `https://api.unsplash.com/search/photos/?client_id=fdAq1PMxAK-12a6aWN0ClUsSq7M-b3_kg6h545BhU_kquery=${cityInput.value}`
+            `https://api.unsplash.com/search/photos/?client_id=2kd3ZjVt5tGBAlH0KMTER7YQwBnVlRIImLRYgoD3yPM&query=${cityInput.value}`
         )
         .then((response) => response.json())
         .then((data) => {
@@ -33,14 +29,6 @@ searchForm.addEventListener("submit", (event) => {
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
-
-            if (data.current.condition.text === "Partly cloudy") {
-                setFavicons('./icons/partly-cloudy.ico');
-
-            } else {
-                setFavicons('./icons/default.gif');
-
-            }
             city.innerText = data.location.name;
             icon.src = data.current.condition.icon;
             condition.innerText = data.current.condition.text;

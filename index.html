@@ -1,35 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Weather App</title>
+    <title>weather-app</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+
 </head>
 
 <body>
-    <div id="app-container">
-        <div id="weather-layout">
-
-            <div class="weather-card">
-                <h2 class="city"></h2>
-                <img class="icon" />
-                <p class="condition"></p>
-                <p class="temp"></p>
-            </div>
+    <div class="app">
+        <div class="weather-card">
+            <h2 class="city"></h2>
+            <img class="icon" />
+            <p class="condition"></p>
+            <p class="temp"></p>
         </div>
-        <div id="city-layout">
+        <form class="search-box">
+            <input class="city-input" type="text" required="required" placeholder="city name..." />
+            <button type="submit" class="search-btn">search</button>
+        </form>
+        <div class="">
 
-            <form class="search-box">
-                <input class="city-input" type="text" required="required" placeholder="city name..." />
-                <button type="submit" class="search-btn">search</button>
-            </form>
-
-            <div id="result">
-
-            </div>
         </div>
     </div>
 
