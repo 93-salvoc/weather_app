@@ -19,9 +19,11 @@ searchBtn.addEventListener("click", function(event) {
 
                 weatherCard.innerHTML = `
             <h2>${data.location.name}</h2>
+            <div>
             <img src="https:${day.day.condition.icon}" alt="${day.day.condition.text}" />
-            <p>${day.day.condition.text}</p>
-            <p>${day.day.avgtemp_c}°C</p>
+            <p class='weather-description'>${day.day.condition.text}</p>
+            </div>
+            <p class='temp'>${day.day.avgtemp_c}°</p>
             
           `
                 console.log(weatherCard);;
