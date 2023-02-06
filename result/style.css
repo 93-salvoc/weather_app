@@ -6,6 +6,17 @@
     font-family: 'Poppins', sans-serif;
 }
 
+body {
+    background-color: rgb(244, 244, 241);
+}
+
+.app {
+    margin: 100px 200px 100px 200px;
+    border-radius: 40px;
+    border:solid brown;
+    padding: 40px;
+}
+
 form {
     margin: auto;
     display: flex;
@@ -62,5 +73,3 @@ form {
     flex-direction: column;
     justify-content: space-between;
 }
-
-#search-layout {}
