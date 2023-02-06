@@ -5,24 +5,25 @@
     <title>weather-app</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
     <div class="app">
-        <div class="weather-card">
-            <h2 class="city-name"></h2>
-            <img class="icon" />
-            <p class="condition"></p>
-            <p class="temp"></p>
-        </div>
-        <form class="search-box">
-            <input class="city-input" type="text" required="required" placeholder="city name..." />
-            <button type="submit" class="search-btn">search</button>
-        </form>
-        <div class="">
+        <div id="weather-layout">
+
 
         </div>
+
+        <div id="search-layout">
+            <form class="search-box">
+                <input class="input-bar" type="text" required="required" placeholder="city name..." />
+                <button type="submit" class="search-btn">
+            <i class="material-icons">search</i>
+        </button>
+            </form>
+        </div>
+
     </div>
 
     <script src="script.js"></script>

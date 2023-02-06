@@ -1,38 +1,33 @@
-const apiKey = "2431bb7af7d54949a0e180334231801";
+const weatherLayout = document.getElementById("weather-layout");
+const infoLayout = document.getElementById("info-layout");
+const searchLayout = document.getElementById("search-layout");
+const searchBox = document.querySelector(".search-box");
+const inputBar = document.querySelector(".input-bar");
+const searchBtn = document.querySelector(".search-btn");
 
-const cityName = document.querySelector(".city-name");
-const icon = document.querySelector(".icon");
-const condition = document.querySelector(".condition");
-const temp = document.querySelector(".temp");
-
-const cityInput = document.querySelector(".city-input");
-const searchForm = document.querySelector("form");
-
-
-
-searchForm.addEventListener("submit", (event) => {
+searchBtn.addEventListener("click", function(event) {
     event.preventDefault();
-    fetch(
-            `https://api.unsplash.com/search/photos/?client_id=2kd3ZjVt5tGBAlH0KMTER7YQwBnVlRIImLRYgoD3yPM&query=${cityInput.value}`
-        )
-        .then((response) => response.json())
-        .then((data) => {
-            let randomIndex = Math.floor(Math.random() * data.results.length);
-            console.log(data.results);
-            console.log(data.results[randomIndex].urls.regular);
-            document.body.style.backgroundImage = `url(${data.results[randomIndex].urls.regular})`;
-        });
 
-    fetch(
-            `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${cityInput.value}`
-        )
-        .then((response) => response.json())
-        .then((data) => {
-            console.log(data);
-            cityName.innerText = data.location.name;
-            icon.src = data.current.condition.icon;
-            condition.innerText = data.current.condition.text;
-            temp.innerText = data.current.temp_c + "°C";
-        })
-        .catch((err) => console.error(err));
+    const city = inputBar.value;
+    fetch(`http://api.weatherapi.com/v1/forecast.json?key=c1c493a1ed79402aa6090757230402&q=${city}&days=7&aqi=no&alerts=no`)
+        .then(response => response.json())
+        .then(data => {
+            weatherLayout.innerHTML = "";
+            data.forecast.forecastday.forEach(day => {
+                const weatherCard = document.createElement("div");
+                weatherCard.classList.add("weather-card");
+
+                weatherCard.innerHTML = `
+            <h2>${data.location.name}</h2>
+            <img src="https:${day.day.condition.icon}" alt="${day.day.condition.text}" />
+            <p>${day.day.condition.text}</p>
+            <p>${day.day.avgtemp_c}°C</p>
+            
+          `
+                console.log(weatherCard);;
+
+                weatherLayout.appendChild(weatherCard);
+            });
+            inputBar.value = "";
+        });
 });
