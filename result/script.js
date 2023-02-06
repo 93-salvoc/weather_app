@@ -4,6 +4,7 @@ const searchLayout = document.getElementById("search-layout");
 const searchBox = document.querySelector(".search-box");
 const inputBar = document.querySelector(".input-bar");
 const searchBtn = document.querySelector(".search-btn");
+let counter=0;
 
 searchBtn.addEventListener("click", function(event) {
     event.preventDefault();
@@ -29,6 +30,14 @@ searchBtn.addEventListener("click", function(event) {
                 console.log(weatherCard);;
 
                 weatherLayout.appendChild(weatherCard);
+
+                if (counter < 6) {
+                    weatherLayout.appendChild(document.createElement("hr"));
+                    console.log(`day is ${day}`);
+                    counter++;
+                }
+                else {counter = 0}
+
             });
             inputBar.value = "";
         });
