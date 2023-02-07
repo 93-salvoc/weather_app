@@ -33,8 +33,12 @@ body video {
     width: 80em;
 }
 
+#app {
+    width: 80em;
+}
+
 form {
-    z-index: 2;
+    z-index: 1;
     display: flex;
     justify-content: center;
     width: 30%;
@@ -122,9 +126,22 @@ hr {
     height:100%;
 }
 
+#home-search-layout {
+    display: flex;
+    border-radius: 0 0 20px 20px;
+    padding: 40px 0 40px 50px;
+}
+
 #search-layout {
     display: flex;
     background-color: #354f52;
     border-radius: 0 0 20px 20px;
     padding: 40px 0 40px 50px;
+}
+
+#home-search-box {
+    position: fixed;
+    bottom: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
