@@ -8,8 +8,9 @@ let counter=0;
 
 searchBtn.addEventListener("click", function(event) {
     event.preventDefault();
-
     const city = inputBar.value;
+
+    //fetch weather data
     fetch(`http://api.weatherapi.com/v1/forecast.json?key=c1c493a1ed79402aa6090757230402&q=${city}&days=7&aqi=no&alerts=no`)
         .then(response => response.json())
         .then(data => {
@@ -40,5 +41,19 @@ searchBtn.addEventListener("click", function(event) {
 
             });
             inputBar.value = "";
+        });
+
+
+    //fetch img data
+    fetch(
+        `https://api.unsplash.com/search/photos/?client_id=2kd3ZjVt5tGBAlH0KMTER7YQwBnVlRIImLRYgoD3yPM&query=${city}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          let randomIndex = Math.floor(Math.random() * data.results.length);
+          console.log(data.results);
+          console.log(data.results[randomIndex].urls.regular);
+        //   document.body.style.backgroundImage = `url(${data.results[randomIndex].urls.regular})`;
+          document.getElementById('weather-layout').style.backgroundImage = `url(${data.results[randomIndex].urls.regular})`;
         });
 });

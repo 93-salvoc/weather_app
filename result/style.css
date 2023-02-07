@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: rgb(244, 244, 241);
+    background-color: #cad2c5;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -66,8 +66,11 @@ form {
     flex-wrap: wrap;
     justify-content: space-around;
     height: 600px;
-    background-color: lightcyan;
     border-radius: 20px 20px 0 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
 }
 
 .weather-card {
@@ -77,6 +80,8 @@ form {
     align-items: center;
     width: 11%;
     text-align: center;
+    color: white;
+    text-shadow: 2px 2px 4px black;
 }
 
 .weather-card > div {
@@ -92,7 +97,8 @@ form {
 }
 
 .temp {
-    font-size: 30px;
+    font-size: 40px;
+    font-weight: 600;
 }
 
 hr {
@@ -102,7 +108,7 @@ hr {
 
 #search-layout {
     display: flex;
-    background-color: #0b231e;
+    background-color: #354f52;
     border-radius: 0 0 20px 20px;
     padding: 40px 0 40px 50px;
 }
