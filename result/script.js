@@ -10,6 +10,9 @@ searchBtn.addEventListener("click", function(event) {
     event.preventDefault();
     const city = inputBar.value;
 
+    //remove background video
+    document.querySelector('video').remove();
+
     //fetch weather data
     fetch(`http://api.weatherapi.com/v1/forecast.json?key=c1c493a1ed79402aa6090757230402&q=${city}&days=7&aqi=no&alerts=no`)
         .then(response => response.json())
