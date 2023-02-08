@@ -27,9 +27,21 @@ searchBtn.addEventListener("click", function(event) {
         .then(response => response.json())
         .then(data => {
             weatherLayout.innerHTML = "";
-            data.forecast.forecastday.forEach(day => {
+            data.forecast.forecastday.forEach((day, index) => {
                 const weatherCard = document.createElement("div");
                 weatherCard.classList.add("weather-card");
+                console.log(data);
+                console.log(index);
+
+                if (index === 0) {
+                    weatherCard.classList.add('first-card');
+                }
+                else if (index === 6) {
+                    weatherCard.classList.add('first-card');
+                }
+
+                const d = new Date("2023-02-28");
+                console.log(d.getDay());
 
                 weatherCard.innerHTML = `
             <h2>${data.location.name}</h2>
