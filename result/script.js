@@ -4,7 +4,8 @@ const searchLayout = document.getElementById("search-layout");
 const searchBox = document.querySelector(".search-box");
 const inputBar = document.querySelector(".input-bar");
 const searchBtn = document.querySelector(".search-btn");
-let counter=0;
+const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+let counter = 0;
 
 const changeID = (element, newID) => element.id = newID;
 
@@ -16,10 +17,10 @@ searchBtn.addEventListener("click", function(event) {
     //remove background video
     if (document.querySelector('video') !== null) {
         document.querySelector('video').remove();
-        
+
         //make bottom bar visible & move search box to bottom
         changeID(document.getElementById('home-search-layout'), 'search-layout');
-        changeID(document.getElementById('home-search-box'), '');
+        changeID(document.getElementById('home-search-box'), 'result-search-box');
     }
 
     //fetch weather data
@@ -29,29 +30,36 @@ searchBtn.addEventListener("click", function(event) {
             weatherLayout.innerHTML = "";
             data.forecast.forecastday.forEach((day, index) => {
                 const weatherCard = document.createElement("div");
+                let date = data.forecast.forecastday[index].date;
                 weatherCard.classList.add("weather-card");
                 console.log(data);
-                console.log(index);
 
                 if (index === 0) {
                     weatherCard.classList.add('first-card');
-                }
-                else if (index === 6) {
-                    weatherCard.classList.add('first-card');
+                    date = "Today";
+                } else if (index === 6) {
+                    weatherCard.classList.add('last-card');
                 }
 
-                const d = new Date("2023-02-28");
+                const d = new Date(data.forecast.forecastday[index].date);
                 console.log(d.getDay());
 
                 weatherCard.innerHTML = `
-            <h2>${data.location.name}</h2>
+            <h2>${weekDays[d.getDay()]}</h2>
+            <p><strong>${date}</strong></p>
             <div>
             <img src="https:${day.day.condition.icon}" alt="${day.day.condition.text}" />
-            <p class='weather-description'>${day.day.condition.text}</p>
+            <p class='weather-description'><strong>${day.day.condition.text}</strong></p>
             </div>
             <p class='temp'>${day.day.avgtemp_c}°</p>
             
           `
+
+
+                const cityName = document.querySelector(".city-name");
+                cityName.innerHTML = `
+                <h1>${data.location.name}</h1>
+                `
                 console.log(weatherCard);;
 
                 weatherLayout.appendChild(weatherCard);
@@ -60,8 +68,7 @@ searchBtn.addEventListener("click", function(event) {
                     weatherLayout.appendChild(document.createElement("hr"));
                     console.log(`day is ${day}`);
                     counter++;
-                }
-                else {counter = 0}
+                } else { counter = 0 }
 
             });
             inputBar.value = "";
@@ -72,9 +79,9 @@ searchBtn.addEventListener("click", function(event) {
     fetch(`https://api.unsplash.com/search/photos/?client_id=2kd3ZjVt5tGBAlH0KMTER7YQwBnVlRIImLRYgoD3yPM&query=${city}`)
         .then((response) => response.json())
         .then((data) => {
-          let randomIndex = Math.floor(Math.random() * data.results.length);
-          console.log(data.results);
-          console.log(data.results[randomIndex].urls.regular);
-          document.getElementById('weather-layout').style.backgroundImage = `url(${data.results[randomIndex].urls.regular})`;
+            let randomIndex = Math.floor(Math.random() * data.results.length);
+            console.log(data.results);
+            console.log(data.results[randomIndex].urls.regular);
+            document.getElementById('weather-layout').style.backgroundImage = `url(${data.results[randomIndex].urls.regular})`;
         });
 });
