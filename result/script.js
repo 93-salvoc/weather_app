@@ -10,6 +10,8 @@ let counter = 0;
 const changeID = (element, newID) => element.id = newID;
 
 
+
+
 searchBtn.addEventListener("click", function(event) {
     event.preventDefault();
     const city = inputBar.value;
@@ -54,6 +56,7 @@ searchBtn.addEventListener("click", function(event) {
             <p class='temp'>${day.day.avgtemp_c}°</p>
             
           `
+                
 
 
                 const cityName = document.querySelector(".city-name");
@@ -70,8 +73,15 @@ searchBtn.addEventListener("click", function(event) {
                     counter++;
                 } else { counter = 0 }
 
+                
             });
+            
+            //create favicon
+            let favicon = document.querySelector('.favicon');
+            favicon.href = data.forecast.forecastday[0].day.condition.icon;
+
             inputBar.value = "";
+
         });
 
 
